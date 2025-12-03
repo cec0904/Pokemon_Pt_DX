@@ -76,8 +76,13 @@ bool CPlayerObject::Init()
 	SetRootComponent(mRoot);
 
 	mAnimation = mRoot->CreateAnimation2D<CAnimation2D>();
-	mAnimation->AddSequence("PlayerIdle", 1.f, 1.f, true, false);
+	/*mAnimation->AddSequence("PlayerIdle", 1.f, 1.f, true, false);*/
+
+	mAnimation->AddSequence("PlayerWalkDown", 1.f, 1.f, true, false);
 	mAnimation->AddSequence("PlayerWalkUp", 1.f, 1.f, true, false);
+	mAnimation->AddSequence("PlayerWalkRight", 1.f, 1.f, true, false);
+	mAnimation->AddSequence("PlayerWalkLeft", 1.f, 1.f, true, false);
+
 	mAnimation->AddSequence("PlayerAttack", 1.f, 0.6f, true, false);
 
 	mAnimation->SetEndFunction("PlayerAttack", this, &CPlayerObject::AttackEnd);
@@ -250,7 +255,7 @@ void CPlayerObject::MoveDown(float DeltaTime)
 	/*FVector3D Pos = mRootComponent->GetWorldPosition();
 	FVector3D Dir = mRootComponent->GetAxis(EAxis::Y);
 	mRootComponent->SetWorldPos(Pos + Dir * DeltaTime * -3.f);*/
-	mAnimation->ChangeAnimation("PlayerWalk");
+	mAnimation->ChangeAnimation("PlayerWalkDown");
 	mRoot->SetFlip(false);
 
 	mMovement->AddMove(mRootComponent->GetAxis(EAxis::Y) * -1);
@@ -258,6 +263,7 @@ void CPlayerObject::MoveDown(float DeltaTime)
 
 void CPlayerObject::MoveRight(float DeltaTime)
 {
+	mAnimation->ChangeAnimation("PlayerWalkRight");
 	mRoot->SetFlip(false);
 
 	mMovement->AddMove(mRootComponent->GetAxis(EAxis::X) * 1);
@@ -265,6 +271,7 @@ void CPlayerObject::MoveRight(float DeltaTime)
 
 void CPlayerObject::MoveLeft(float DeltaTime)
 {
+	mAnimation->ChangeAnimation("PlayerWalkLeft");
 	mRoot->SetFlip(false);
 
 	mMovement->AddMove(mRootComponent->GetAxis(EAxis::X) * -1);

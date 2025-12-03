@@ -21,14 +21,14 @@ bool CAnimation2DManager::Init()
 	// 애니메이션 하나 등록하기 
 	// Texture/Player/Player.png
 	//애니메이션을 하나 등록하였다.
-	CreateAnimation("PlayerIdle");
+	/*CreateAnimation("PlayerIdle");
 	SetAnimationTextureType("PlayerIdle", EAnimationTextureType::SpriteSheet);
 	SetTexture("PlayerIdle", "PlayerSprite", TEXT("Texture/Player/Player.png"));
 
 	for (int i =0 ; i < 5; ++i)
 	{
 		AddFrame("PlayerIdle", i * 200.f, 0.f, 200.f, 200.f);
-	}
+	}*/
 
 
 	CreateAnimation("Hiker");
@@ -71,6 +71,45 @@ bool CAnimation2DManager::Init()
 
 	SetTexture("PlayerWalkUp", "PlayerWalk", PlayerWalk);
 	AddFrameCount("PlayerWalkUp", 4, 0.f, 0.f, 32.f, 32.f);
+
+	// 플레이어 아래로로 걷기
+	CreateAnimation("PlayerWalkDown");
+	SetAnimationTextureType("PlayerWalkDown", EAnimationTextureType::Frame);
+
+	PlayerWalk.clear();
+	PlayerWalk.emplace_back(TEXT("Texture\\Pokemon\\Player\\PlayerWalk-Down-00-Photoroom.png"));
+	PlayerWalk.emplace_back(TEXT("Texture\\Pokemon\\Player\\PlayerWalk-Down-01-Photoroom.png"));
+	PlayerWalk.emplace_back(TEXT("Texture\\Pokemon\\Player\\PlayerWalk-Down-02-Photoroom.png"));
+	PlayerWalk.emplace_back(TEXT("Texture\\Pokemon\\Player\\PlayerWalk-Down-03-Photoroom.png"));
+
+	SetTexture("PlayerWalkDown", "PlayerWalkDown", PlayerWalk);
+	AddFrameCount("PlayerWalkDown", 4, 0.f, 0.f, 32.f, 32.f);
+
+	// 플레이어 오른쪽으로 걷기
+	CreateAnimation("PlayerWalkRight");
+	SetAnimationTextureType("PlayerWalkRight", EAnimationTextureType::Frame);
+
+	PlayerWalk.clear();
+	PlayerWalk.emplace_back(TEXT("Texture\\Pokemon\\Player\\PlayerWalk-Right-00-Photoroom.png"));
+	PlayerWalk.emplace_back(TEXT("Texture\\Pokemon\\Player\\PlayerWalk-Right-01-Photoroom.png"));
+	PlayerWalk.emplace_back(TEXT("Texture\\Pokemon\\Player\\PlayerWalk-Right-02-Photoroom.png"));
+	PlayerWalk.emplace_back(TEXT("Texture\\Pokemon\\Player\\PlayerWalk-Right-03-Photoroom.png"));
+
+	SetTexture("PlayerWalkRight", "PlayerWalkRight", PlayerWalk);
+	AddFrameCount("PlayerWalkRight", 4, 0.f, 0.f, 32.f, 32.f);
+
+	// 플레이어 왼쪽으로 걷기
+	CreateAnimation("PlayerWalkLeft");
+	SetAnimationTextureType("PlayerWalkLeft", EAnimationTextureType::Frame);
+
+	PlayerWalk.clear();
+	PlayerWalk.emplace_back(TEXT("Texture\\Pokemon\\Player\\PlayerWalk-Left-00-Photoroom.png"));
+	PlayerWalk.emplace_back(TEXT("Texture\\Pokemon\\Player\\PlayerWalk-Left-01-Photoroom.png"));
+	PlayerWalk.emplace_back(TEXT("Texture\\Pokemon\\Player\\PlayerWalk-Left-02-Photoroom.png"));
+	PlayerWalk.emplace_back(TEXT("Texture\\Pokemon\\Player\\PlayerWalk-Left-03-Photoroom.png"));
+
+	SetTexture("PlayerWalkLeft", "PlayerWalkLeft", PlayerWalk);
+	AddFrameCount("PlayerWalkLeft", 4, 0.f, 0.f, 32.f, 32.f);
 
 
 	//플레이어 공격

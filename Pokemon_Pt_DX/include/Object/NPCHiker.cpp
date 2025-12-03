@@ -58,6 +58,7 @@ bool CNPCHiker::Init()
 	// mMovement->SetMoveSpeed(200.f);
 	
 	
+	
 
 	SetRootComponent(mRoot);
 
@@ -71,36 +72,35 @@ bool CNPCHiker::Init()
 	mRoot->SetFlip(false);
 	mAnimation->ChangeAnimation("Hiker");
 
-
-	
-
-	
-
-
-
-
-
 	return true;
 }
 void CNPCHiker::Update(float DeltaTime)
 {
 	CNPCManager::Update(DeltaTime);
 
-
+	if (!bSetStartPos)
+	{
+		StartPos = mRoot->GetWorldPosition();
+		bSetStartPos = true;
+	}
 	FVector3D CurrentPos = mRoot->GetWorldPosition();
+
+
+	if (CurrentPos.x <= StartPos.x - MoveRange)
+	{
+		Dir = 1.f; 
+	}
+	else if (CurrentPos.x >= StartPos.x + MoveRange)
+	{
+		Dir = -1.f; 
+	}
+
+
+	TargetPos = CurrentPos + mRootComponent->GetAxis(EAxis::X) * mSpeed * DeltaTime * Dir;
+
+	mRoot->SetWorldPos(TargetPos);
+
 	
-	float RightRange = StartPos.x + MoveRange;
-	float LeftRange = StartPos.x - MoveRange;
 
-	if (CurrentPos.x <= RightRange)
-	{
-	mRoot->SetWorldPos(StartPos + mRootComponent->GetAxis(EAxis::X) * mSpeed * DeltaTime );
-	}
-
-	else if (CurrentPos.x >= LeftRange)
-	{
-		mRoot->SetWorldPos(StartPos + mRootComponent->GetAxis(EAxis::X) * mSpeed * DeltaTime * -1);
-	}
-	mRoot->SetWorldPos(CurrentPos);
 }
 

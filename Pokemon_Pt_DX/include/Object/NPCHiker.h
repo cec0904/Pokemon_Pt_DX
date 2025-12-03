@@ -26,8 +26,12 @@ protected:
 	float mSpeed = 200.f;
 
 	FVector3D StartPos;
-	float MoveRange = (300.f, 0.f);
+	FVector3D TargetPos;
 	float Dir = 1.f;
+	bool bSetStartPos = false;
+	float MoveRange = 300.f;
+	
+	
 	
 	
 	
