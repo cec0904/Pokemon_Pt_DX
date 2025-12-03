@@ -30,6 +30,19 @@ bool CAnimation2DManager::Init()
 		AddFrame("PlayerIdle", i * 200.f, 0.f, 200.f, 200.f);
 	}
 
+
+	CreateAnimation("Hiker");
+	SetAnimationTextureType("Hiker", EAnimationTextureType::Frame);
+	vector<const TCHAR*> Hiker;
+	Hiker.emplace_back(TEXT("Texture\\Pokemon\\NPC\\Hiker\\Hiker_0"));
+	Hiker.emplace_back(TEXT("Texture\\Pokemon\\NPC\\Hiker\\Hiker_1"));
+	Hiker.emplace_back(TEXT("Texture\\Pokemon\\NPC\\Hiker\\Hiker_2"));
+	Hiker.emplace_back(TEXT("Texture\\Pokemon\\NPC\\Hiker\\Hiker_3"));
+	
+	SetTexture("Hiker", "Hiker", Hiker);
+	AddFrameCount("Hiker", 4, 0.f, 0.f, 32.f, 32.f);
+
+
 	//// 플레이어 걷기
 	//CreateAnimation("PlayerWalk");
 	//SetAnimationTextureType("PlayerWalk", EAnimationTextureType::Frame);

@@ -66,9 +66,9 @@ bool CPlayerObject::Init()
 
 	//mRoot->SetMesh("CenterTexRect");
 	mRoot->SetTexture("BonoBono", TEXT("Texture/BonoBono.png"),0);
-	mRoot->SetTint(0.1f, 0.1f, 0.8f);
+	//mRoot->SetTint(0.1f, 0.1f, 0.8f);
 	mRoot->SetPivot(0.5f, 0.5f);
-	mRoot->SetOpacity(1.f);
+	//mRoot->SetOpacity(1.f);
 	//mRoot->SetShader("ColorMeshShader");
 
 	mRoot->SetWorldPos(0.f, 0.f, 0.f);

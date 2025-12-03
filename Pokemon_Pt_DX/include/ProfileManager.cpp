@@ -29,6 +29,10 @@ bool CProfileManager::Init()
 	CreateProfile("PlayerAttack", ECollisionChannel::PlayerAttack, true, ECollisionInteraction::Ignore);
 	//몬스터 공격 
 	CreateProfile("MonsterAttack", ECollisionChannel::MonsterAttack, true, ECollisionInteraction::Ignore);
+	// npc 
+	CreateProfile("NPC", ECollisionChannel::NPC, true, ECollisionInteraction::Collision);
+
+
 
 	//플레이어 프로파일 셋팅 
 	/*
@@ -52,6 +56,9 @@ bool CProfileManager::Init()
 	//Monster
 	SetInteraction("Monster", ECollisionChannel::MonsterAttack, ECollisionInteraction::Ignore);
 	SetInteraction("Monster", ECollisionChannel::Monster, ECollisionInteraction::Ignore);
+
+	// npc
+	SetInteraction("NPC", ECollisionChannel::NPC, ECollisionInteraction::Collision);
 
 	return true;
 }

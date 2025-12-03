@@ -9,6 +9,8 @@
 #include "../Object/NearingMonster.h"
 #include "../Object/ObjectSpawnPoint.h"
 #include "../UI/UserWidget/MainWidget.h"
+#include "../Object/NPCManager.h"
+#include "../Object/NPCHiker.h"
 
 CSceneMain::CSceneMain()
 {
@@ -34,6 +36,14 @@ bool CSceneMain::Init()
 	material->SetSamplerType(ETextureSamplerType::Linear);
 	material->AddTexture("MonsterTex", TEXT("Texture/Porori.png"), 0);
 
+	// Hiker material
+	/*mAssetManager->CreateMaterial("Hiker");
+
+	CMaterial* mHiker = mAssetManager->FindMaterial("Hiker");
+
+	mHiker->SetPixelShader("DefaultMaterialShader");
+	mHiker->SetSamplerType(ETextureSamplerType::Linear);
+	mHiker->AddTexture("HikerTex", TEXT("Texture\\Pokemon\\NPC\\Hiker\\Hiker_0"), 0);*/
 
 
 	///////////// 사용할 사운드도 미리 추가한다.
@@ -46,6 +56,16 @@ bool CSceneMain::Init()
 
 	if (Player == nullptr)
 		return false;
+
+	//CGunnerMonster* Monster1 = CreateObj<CGunnerMonster>("GunnerMonster2");
+	//Monster1->SetWorldPos(400.f, 300.f);
+	//Monster1->SetTarget(Player);
+
+	CNPCHiker* pHiker = CreateObj<CNPCHiker>("Hiker");
+	pHiker->SetWorldPos(0.f, 300.f);
+
+	
+	
 
 	CObjectSpawnPoint* MonsterPoint = CreateObj<CObjectSpawnPoint>("MonsterPoint1");
 	MonsterPoint->SetSpawnType(EObjectSpawnType::GunnerMonster);
@@ -66,7 +86,7 @@ bool CSceneMain::Init()
 	MonsterPoint->SetDestroySpawnCount(3);
 	MonsterPoint->SetWorldPos(-400.f, 300.f);
 
-	MonsterPoint = CreateObj<CObjectSpawnPoint>("MonsterPoint3");
+	/*MonsterPoint = CreateObj<CObjectSpawnPoint>("MonsterPoint3");
 	MonsterPoint->SetSpawnType(EObjectSpawnType::GunnerMonster);
 	MonsterPoint->SetSpawnLoopType(EObjectSpawnLoopType::Loop);
 	MonsterPoint->SetImmediateSpawn(false);
@@ -85,7 +105,7 @@ bool CSceneMain::Init()
 	MonsterPoint->SetSpawnLoopType(EObjectSpawnLoopType::Loop);
 	MonsterPoint->SetImmediateSpawn(true);
 	MonsterPoint->SetSpawnTime(10.f);
-	MonsterPoint->SetWorldPos(200.f, 0.f);
+	MonsterPoint->SetWorldPos(200.f, 0.f);*/
 
 	//UI 생성
 	CMainWidget* Widget = mUIManager->CreateWidget<CMainWidget>("Main");
