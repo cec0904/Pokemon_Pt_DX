@@ -83,6 +83,8 @@ public:
 private:
 	void MoveUp(float DeltaTime);
 	void MoveDown(float DeltaTime);
+	void MoveRight(float DeltaTime);
+	void MoveLeft(float DeltaTime);
 
 	void rotationZ(float DeltaTime);
 	void rotationZInv(float DeltaTime);

@@ -77,7 +77,7 @@ bool CPlayerObject::Init()
 
 	mAnimation = mRoot->CreateAnimation2D<CAnimation2D>();
 	mAnimation->AddSequence("PlayerIdle", 1.f, 1.f, true, false);
-	mAnimation->AddSequence("PlayerWalk", 1.f, 1.f, true, false);
+	mAnimation->AddSequence("PlayerWalkUp", 1.f, 1.f, true, false);
 	mAnimation->AddSequence("PlayerAttack", 1.f, 0.6f, true, false);
 
 	mAnimation->SetEndFunction("PlayerAttack", this, &CPlayerObject::AttackEnd);
@@ -145,12 +145,11 @@ bool CPlayerObject::Init()
 	mScene->GetInput()->AddBindKey("MoveDown", 'S');
 	mScene->GetInput()->AddBindFunction("MoveDown", EInputType::Hold, this, &CPlayerObject::MoveDown);
 
-	//회전
-	mScene->GetInput()->AddBindKey("RotationZ", 'D');
-	mScene->GetInput()->AddBindFunction("RotationZ", EInputType::Hold, this, &CPlayerObject::rotationZ);
-	
-	mScene->GetInput()->AddBindKey("RotationZInv", 'A');
-	mScene->GetInput()->AddBindFunction("RotationZInv", EInputType::Hold, this, &CPlayerObject::rotationZInv);
+	mScene->GetInput()->AddBindKey("MoveRight", 'D');
+	mScene->GetInput()->AddBindFunction("MoveRight", EInputType::Hold, this, &CPlayerObject::MoveRight);
+
+	mScene->GetInput()->AddBindKey("MoveLeft", 'A');
+	mScene->GetInput()->AddBindFunction("MoveLeft", EInputType::Hold, this, &CPlayerObject::MoveLeft);
 
 	// 총알 발사
 	mScene->GetInput()->AddBindKey("Fire", VK_SPACE);
@@ -240,7 +239,7 @@ void CPlayerObject::MoveUp(float DeltaTime)
 
 	//mRootComponent->SetWorldPos(Pos + Dir*DeltaTime * 3.f);
 
-	mAnimation->ChangeAnimation("PlayerWalk");
+	mAnimation->ChangeAnimation("PlayerWalkUp");
 	mRoot->SetFlip(false);
 
 	mMovement->AddMove(mRootComponent->GetAxis(EAxis::Y));
@@ -252,9 +251,23 @@ void CPlayerObject::MoveDown(float DeltaTime)
 	FVector3D Dir = mRootComponent->GetAxis(EAxis::Y);
 	mRootComponent->SetWorldPos(Pos + Dir * DeltaTime * -3.f);*/
 	mAnimation->ChangeAnimation("PlayerWalk");
-	mRoot->SetFlip(true);
+	mRoot->SetFlip(false);
 
 	mMovement->AddMove(mRootComponent->GetAxis(EAxis::Y) * -1);
+}
+
+void CPlayerObject::MoveRight(float DeltaTime)
+{
+	mRoot->SetFlip(false);
+
+	mMovement->AddMove(mRootComponent->GetAxis(EAxis::X) * 1);
+}
+
+void CPlayerObject::MoveLeft(float DeltaTime)
+{
+	mRoot->SetFlip(false);
+
+	mMovement->AddMove(mRootComponent->GetAxis(EAxis::X) * -1);
 }
 
 void CPlayerObject::rotationZ(float DeltaTime)

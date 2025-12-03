@@ -30,20 +30,35 @@ bool CAnimation2DManager::Init()
 		AddFrame("PlayerIdle", i * 200.f, 0.f, 200.f, 200.f);
 	}
 
-	// 플레이어 걷기
-	CreateAnimation("PlayerWalk");
-	SetAnimationTextureType("PlayerWalk", EAnimationTextureType::Frame);
+	//// 플레이어 걷기
+	//CreateAnimation("PlayerWalk");
+	//SetAnimationTextureType("PlayerWalk", EAnimationTextureType::Frame);
 
 	vector<const TCHAR*> FileNames;
-	FileNames.emplace_back(TEXT("Texture\\Player\\PlayerFrame\\adventurer-walk-00.png"));
-	FileNames.emplace_back(TEXT("Texture\\Player\\PlayerFrame\\adventurer-walk-01.png"));
-	FileNames.emplace_back(TEXT("Texture\\Player\\PlayerFrame\\adventurer-walk-02.png"));
-	FileNames.emplace_back(TEXT("Texture\\Player\\PlayerFrame\\adventurer-walk-03.png"));
-	FileNames.emplace_back(TEXT("Texture\\Player\\PlayerFrame\\adventurer-walk-04.png"));
-	FileNames.emplace_back(TEXT("Texture\\Player\\PlayerFrame\\adventurer-walk-05.png"));
+	//FileNames.emplace_back(TEXT("Texture\\Player\\PlayerFrame\\adventurer-walk-00.png"));
+	//FileNames.emplace_back(TEXT("Texture\\Player\\PlayerFrame\\adventurer-walk-01.png"));
+	//FileNames.emplace_back(TEXT("Texture\\Player\\PlayerFrame\\adventurer-walk-02.png"));
+	//FileNames.emplace_back(TEXT("Texture\\Player\\PlayerFrame\\adventurer-walk-03.png"));
+	//FileNames.emplace_back(TEXT("Texture\\Player\\PlayerFrame\\adventurer-walk-04.png"));
+	//FileNames.emplace_back(TEXT("Texture\\Player\\PlayerFrame\\adventurer-walk-05.png"));
 
-	SetTexture("PlayerWalk", "PlayerWalk", FileNames);
-	AddFrameCount("PlayerWalk", 6, 0.f, 0.f, 50.f, 37.f);
+	//SetTexture("PlayerWalk", "PlayerWalk", FileNames);
+	//AddFrameCount("PlayerWalk", 6, 0.f, 0.f, 50.f, 37.f);
+
+
+	// 플레이어 위로 걷기
+	CreateAnimation("PlayerWalkUp");
+	SetAnimationTextureType("PlayerWalkUp", EAnimationTextureType::Frame);
+
+	vector<const TCHAR*> PlayerWalk;
+	PlayerWalk.emplace_back(TEXT("Texture\\Pokemon\\Player\\PlayerWalk-Up-00-Photoroom.png"));
+	PlayerWalk.emplace_back(TEXT("Texture\\Pokemon\\Player\\PlayerWalk-Up-01-Photoroom.png"));
+	PlayerWalk.emplace_back(TEXT("Texture\\Pokemon\\Player\\PlayerWalk-Up-02-Photoroom.png"));
+	PlayerWalk.emplace_back(TEXT("Texture\\Pokemon\\Player\\PlayerWalk-Up-03-Photoroom.png"));
+
+	SetTexture("PlayerWalkUp", "PlayerWalk", PlayerWalk);
+	AddFrameCount("PlayerWalkUp", 4, 0.f, 0.f, 32.f, 32.f);
+
 
 	//플레이어 공격
 	//Texture\\Player\\PlayerFrame\\adventurer-kick-00.png

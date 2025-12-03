@@ -183,6 +183,8 @@
     <ClCompile Include="Object\GunnerMonster.cpp" />
     <ClCompile Include="Object\MonsterObject.cpp" />
     <ClCompile Include="Object\NearingMonster.cpp" />
+    <ClCompile Include="Object\NPCHiker.cpp" />
+    <ClCompile Include="Object\NPCManager.cpp" />
     <ClCompile Include="Object\ObjectSpawnPoint.cpp" />
     <ClCompile Include="Object\PlayerObject.cpp" />
     <ClCompile Include="Object\SceneObject.cpp" />
@@ -289,6 +291,8 @@
     <ClInclude Include="Object\GunnerMonster.h" />
     <ClInclude Include="Object\MonsterObject.h" />
     <ClInclude Include="Object\NearingMonster.h" />
+    <ClInclude Include="Object\NPCHiker.h" />
+    <ClInclude Include="Object\NPCManager.h" />
     <ClInclude Include="Object\ObjectSpawnPoint.h" />
     <ClInclude Include="Object\PlayerObject.h" />
     <ClInclude Include="Object\SceneObject.h" />
