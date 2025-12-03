@@ -46,6 +46,7 @@ bool CNPCHiker::Init()
 
 	mMovement = CreateComponent<CMovementComponent>();
 
+	
 	mRoot->SetTexture("Hiker");
 	// 중심점
 	mRoot->SetPivot(0.5f, 0.5f);
@@ -53,7 +54,8 @@ bool CNPCHiker::Init()
 	// mRoot->SetOpacity(1.f);
 
 	mMovement->SetUpdateComponent(mRoot);
-	
+	// mMovement->SetMoveAxis(EAxis::X);
+	// mMovement->SetMoveSpeed(200.f);
 	
 	
 
@@ -84,7 +86,21 @@ void CNPCHiker::Update(float DeltaTime)
 {
 	CNPCManager::Update(DeltaTime);
 
-	FVector3D StartPos = mRoot->GetWorldPosition(0.f, 300.f);
-	mRoot->SetWorldPos(StartPos + mRootComponent->GetAxis(EAxis::X) * mSpeed * DeltaTime);
+
+	FVector3D CurrentPos = mRoot->GetWorldPosition();
+	
+	float RightRange = StartPos.x + MoveRange;
+	float LeftRange = StartPos.x - MoveRange;
+
+	if (CurrentPos.x <= RightRange)
+	{
+	mRoot->SetWorldPos(StartPos + mRootComponent->GetAxis(EAxis::X) * mSpeed * DeltaTime );
+	}
+
+	else if (CurrentPos.x >= LeftRange)
+	{
+		mRoot->SetWorldPos(StartPos + mRootComponent->GetAxis(EAxis::X) * mSpeed * DeltaTime * -1);
+	}
+	mRoot->SetWorldPos(CurrentPos);
 }
 

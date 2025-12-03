@@ -100,7 +100,7 @@ bool CPlayerObject::Init()
 	
 
 	mMovement->SetUpdateComponent(mRoot);
-	mMovement->SetMoveSpeed(500.f);
+	mMovement->SetMoveSpeed(200.f);
 
 	mRotation->SetUpdateComponent(mRoot);
 

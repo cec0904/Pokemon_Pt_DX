@@ -23,7 +23,12 @@ protected:
 	//Idel 상태값으로 돌아갈건지 여부 
 	bool mAutoBasePose = true;
 
-	float mSpeed = 300.f;
+	float mSpeed = 200.f;
+
+	FVector3D StartPos;
+	float MoveRange = (300.f, 0.f);
+	float Dir = 1.f;
+	
 	
 	
 
