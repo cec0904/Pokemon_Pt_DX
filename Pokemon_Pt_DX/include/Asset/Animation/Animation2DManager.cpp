@@ -34,10 +34,10 @@ bool CAnimation2DManager::Init()
 	CreateAnimation("Hiker");
 	SetAnimationTextureType("Hiker", EAnimationTextureType::Frame);
 	vector<const TCHAR*> Hiker;
-	Hiker.emplace_back(TEXT("Texture\\Pokemon\\NPC\\Hiker\\Hiker_0"));
-	Hiker.emplace_back(TEXT("Texture\\Pokemon\\NPC\\Hiker\\Hiker_1"));
-	Hiker.emplace_back(TEXT("Texture\\Pokemon\\NPC\\Hiker\\Hiker_2"));
-	Hiker.emplace_back(TEXT("Texture\\Pokemon\\NPC\\Hiker\\Hiker_3"));
+	Hiker.emplace_back(TEXT("Texture\\Pokemon\\NPC\\Hiker\\Hiker_0.png"));
+	Hiker.emplace_back(TEXT("Texture\\Pokemon\\NPC\\Hiker\\Hiker_1.png"));
+	Hiker.emplace_back(TEXT("Texture\\Pokemon\\NPC\\Hiker\\Hiker_2.png"));
+	Hiker.emplace_back(TEXT("Texture\\Pokemon\\NPC\\Hiker\\Hiker_3.png"));
 	
 	SetTexture("Hiker", "Hiker", Hiker);
 	AddFrameCount("Hiker", 4, 0.f, 0.f, 32.f, 32.f);

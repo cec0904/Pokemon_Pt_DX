@@ -69,7 +69,9 @@ bool CNPCHiker::Init()
 
 	mAnimation = mRoot->CreateAnimation2D<CAnimation2D>();
 	mAnimation->AddSequence("Hiker", 1.f, 1.f, true, false);
+
 	mRoot->SetFlip(false);
+
 	mAnimation->ChangeAnimation("Hiker");
 
 	return true;
@@ -86,7 +88,7 @@ void CNPCHiker::Update(float DeltaTime)
 	FVector3D CurrentPos = mRoot->GetWorldPosition();
 
 
-	if (CurrentPos.x <= StartPos.x - MoveRange)
+	if (CurrentPos.x <= StartPos.x)
 	{
 		Dir = 1.f; 
 	}
