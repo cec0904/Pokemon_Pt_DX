@@ -2,21 +2,21 @@
 <Project>
   <ProjectOutputs>
     <ProjectOutput>
-      <FullPath>E:\Pokemon\Pokemon_Pt_DX\Pokemon_Pt_DX\Bin\Pokemon_Pt_DX_Debug.exe</FullPath>
+      <FullPath>C:\Users\전의찬\Desktop\어소트락\Pokemon_Pt_DX\Pokemon_Pt_DX\Bin\Pokemon_Pt_DX_Debug.exe</FullPath>
     </ProjectOutput>
   </ProjectOutputs>
   <ContentFiles>
     <ContentFile>
-      <FullPath>E:\Pokemon\Pokemon_Pt_DX\Pokemon_Pt_DX\Bin\ColorMesh.cso</FullPath>
+      <FullPath>C:\Users\전의찬\Desktop\어소트락\Pokemon_Pt_DX\Pokemon_Pt_DX\Bin\ColorMesh.cso</FullPath>
     </ContentFile>
     <ContentFile>
-      <FullPath>E:\Pokemon\Pokemon_Pt_DX\Pokemon_Pt_DX\Bin\Mesh.cso</FullPath>
+      <FullPath>C:\Users\전의찬\Desktop\어소트락\Pokemon_Pt_DX\Pokemon_Pt_DX\Bin\Mesh.cso</FullPath>
     </ContentFile>
     <ContentFile>
-      <FullPath>E:\Pokemon\Pokemon_Pt_DX\Pokemon_Pt_DX\Bin\Sprite.cso</FullPath>
+      <FullPath>C:\Users\전의찬\Desktop\어소트락\Pokemon_Pt_DX\Pokemon_Pt_DX\Bin\Sprite.cso</FullPath>
     </ContentFile>
     <ContentFile>
-      <FullPath>E:\Pokemon\Pokemon_Pt_DX\Pokemon_Pt_DX\Bin\UI.cso</FullPath>
+      <FullPath>C:\Users\전의찬\Desktop\어소트락\Pokemon_Pt_DX\Pokemon_Pt_DX\Bin\UI.cso</FullPath>
     </ContentFile>
   </ContentFiles>
   <SatelliteDlls />
