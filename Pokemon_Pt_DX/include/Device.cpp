@@ -203,11 +203,21 @@ bool CDevice::Init(HWND hWnd, unsigned int Width, unsigned int Height, bool Wind
 
 	//뷰포트 만들기 
 	//화변에 그려지는 화면을 뷰포트라고한다. 
-	D3D11_VIEWPORT VP = {};
-	VP.Width = (float)Width;
-	VP.Height = (float)Height;
-	VP.MaxDepth = 1.f;	// 깊이 버퍼 0 ~ 1로 표현한다 그러므로 1을 넣어준다. 
-	mContext->RSSetViewports(1, &VP);
+	D3D11_VIEWPORT UpperVP = {};
+	UpperVP.TopLeftX = 0.f;
+	UpperVP.TopLeftY = 0.f;
+	UpperVP.Width = (float)Width;
+	UpperVP.Height = (float)Height * 0.5f;
+	UpperVP.MaxDepth = 1.f;	// 깊이 버퍼 0 ~ 1로 표현한다 그러므로 1을 넣어준다. 
+	mContext->RSSetViewports(1, &UpperVP);
+
+	D3D11_VIEWPORT LowerVP = {};
+	LowerVP.TopLeftX = 0.f;
+	LowerVP.TopLeftY = (float)Height * 0.5f;
+	LowerVP.Width = (float)Width;
+	LowerVP.Height = (float)Height * 0.5f;
+	LowerVP.MaxDepth = 1.f;	// 깊이 버퍼 0 ~ 1로 표현한다 그러므로 1을 넣어준다. 
+	mContext->RSSetViewports(1, &LowerVP);
 
 
 

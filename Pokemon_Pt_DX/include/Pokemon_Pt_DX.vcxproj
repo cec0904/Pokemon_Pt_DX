@@ -179,6 +179,7 @@
     <ClCompile Include="Gameinfo.cpp" />
     <ClCompile Include="GameManager.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Object\BackObject.cpp" />
     <ClCompile Include="Object\BulletObject.cpp" />
     <ClCompile Include="Object\GravityBullet.cpp" />
     <ClCompile Include="Object\GunnerMonster.cpp" />
@@ -290,6 +291,7 @@
     <ClInclude Include="Gameinfo.h" />
     <ClInclude Include="GameManager.h" />
     <ClInclude Include="Matrix.h" />
+    <ClInclude Include="Object\BackObject.h" />
     <ClInclude Include="Object\BulletObject.h" />
     <ClInclude Include="Object\GravityBullet.h" />
     <ClInclude Include="Object\GunnerMonster.h" />

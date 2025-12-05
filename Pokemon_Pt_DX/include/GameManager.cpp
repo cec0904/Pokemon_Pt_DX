@@ -51,8 +51,8 @@ bool CGameManager::Init(HINSTANCE hInst)
 {
 	mhInst = hInst;
 
-	lstrcpy(mClassName, TEXT("YH2DFrameWork"));
-	lstrcpy(mTitleName, TEXT("YH2DFrameWork"));
+	lstrcpy(mClassName, TEXT("Pokemon_Pt"));
+	lstrcpy(mTitleName, TEXT("Pokemon_Pt"));
 	
 	//레지스터 클래스 등록 
 	RegisterWindowClass();

@@ -193,6 +193,9 @@
     <Filter Include="07.Component\01.SceneComponent\06.Widget">
       <UniqueIdentifier>{be036ed1-e71d-4e71-9b0c-e538fe606a00}</UniqueIdentifier>
     </Filter>
+    <Filter Include="06.Object\06.BackGround">
+      <UniqueIdentifier>{360994a3-ce5f-43cc-99bd-7f9ccce60cdf}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -491,6 +494,9 @@
     </ClCompile>
     <ClCompile Include="UI\UserWidget\StartWidget.cpp">
       <Filter>10.UI\02.UserWidget\01.Main</Filter>
+    </ClCompile>
+    <ClCompile Include="Object\BackObject.cpp">
+      <Filter>06.Object\06.BackGround</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -835,6 +841,9 @@
     </ClInclude>
     <ClInclude Include="UI\UserWidget\StartWidget.h">
       <Filter>10.UI\02.UserWidget\01.Main</Filter>
+    </ClInclude>
+    <ClInclude Include="Object\BackObject.h">
+      <Filter>06.Object\06.BackGround</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

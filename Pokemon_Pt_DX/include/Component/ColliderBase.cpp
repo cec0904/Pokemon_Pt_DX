@@ -19,6 +19,7 @@ CColliderBase::CColliderBase()
 
 #ifdef _DEBUG
 	mRenderType = EComponentRender::Render;
+	mRenderLayerName = "Object";
 #endif
 
 

@@ -11,6 +11,7 @@
 #include "../UI/UserWidget/MainWidget.h"
 #include "../Object/NPCManager.h"
 #include "../Object/NPCHiker.h"
+#include "../Object/BackObject.h"
 
 CSceneMain::CSceneMain()
 {
@@ -41,6 +42,9 @@ bool CSceneMain::Init()
 
 
 	///////////////////////////////////////////////
+
+	CBackObject* BackGorundObject = CreateObj<CBackObject>("BackGroundObj");
+	BackGorundObject->SetWorldScale(3000.f, 1080.f);
 
 	CPlayerObject* Player = CreateObj<CPlayerObject>("Player");
 

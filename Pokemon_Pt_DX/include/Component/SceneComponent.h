@@ -17,11 +17,19 @@ protected:
 	CSceneComponent* mParent = nullptr;
 	vector<CSharedPtr<CSceneComponent>>	mChildList;
 
+	// 레이어 이름
+	string mRenderLayerName;
+
 	//해당 SceneComponent가 그려질지 여부
 	EComponentRender mRenderType = EComponentRender::None;
 
 public:
 	void AddChild(CSceneComponent* Child);
+
+	const string& GetRenderLayerName() const
+	{
+		return mRenderLayerName;
+	}
 
 public:
 	virtual bool Init();

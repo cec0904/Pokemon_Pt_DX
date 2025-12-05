@@ -2,6 +2,14 @@
 
 #include "../Gameinfo.h"
 
+// 레이어
+struct FRenderLayer
+{
+	list <CSharedPtr<class CSceneComponent>> RenderList;
+	int ZOrder = 0;
+};
+
+
 class CRenderManager
 {
 	DECLARE_SINGLETON(CRenderManager);
@@ -10,7 +18,11 @@ private:
 	class CRenderStateManager* mStateManager = nullptr;
 
 	//Render 할 SceneComponent를 모아둘것이다.
-	list <CSharedPtr<class CSceneComponent>> mRenderList;
+	//list <CSharedPtr<class CSceneComponent>> mRenderList;
+	// map, unordered_map
+	// Z 오더값, 그려질 목록
+	map<int, FRenderLayer*> mLayerList;
+	unordered_map<string, int> mLayerNameList;
 	//정렬 타입
 	ERenderSortType mRenderSortType = ERenderSortType::Y;
 
@@ -25,14 +37,23 @@ private:
 	class CRenderState* mDepthDisable = nullptr;
 
 public:
+	// RenderList 등록함수
+	void AddRenderList(class CSceneComponent* Component);
+	void ClearRenderList();
+
+	// 레이어 생성
+	bool CreateRenderLayer(const string& Name, int ZOrder);
+	// 레이어 탐색
+	FRenderLayer* FindLayer(const string& Name);
+public:
 	class CRenderStateManager* GetStateManager()
 	{
 		return mStateManager;
 	}
 
-	//RenderList 등록함수
-	void AddRenderList(class CSceneComponent* Component);
-	void ClearRenderList();
+	////RenderList 등록함수
+	//void AddRenderList(class CSceneComponent* Component);
+	//void ClearRenderList();
 
 
 public:

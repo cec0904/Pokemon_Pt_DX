@@ -9,7 +9,7 @@ CMeshComponent::CMeshComponent()
 	: CSceneComponent()
 {
 	mRenderType = EComponentRender::Render;
-
+	mRenderLayerName = "Object";
 	//mTransformCBuffer = new CTransformCBuffer;
 	//mTransformCBuffer->Init();
 }

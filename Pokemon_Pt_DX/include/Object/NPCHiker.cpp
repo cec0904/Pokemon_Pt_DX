@@ -47,7 +47,7 @@ bool CNPCHiker::Init()
 	mMovement = CreateComponent<CMovementComponent>();
 
 	
-	mRoot->SetTexture("Hiker");
+	mRoot->SetTexture("Hiker", TEXT("Texture/Pokemon/NPC/Hiker/Hiker_0.png"), 0);
 	// 중심점
 	mRoot->SetPivot(0.5f, 0.5f);
 	// 투명도
@@ -64,6 +64,7 @@ bool CNPCHiker::Init()
 
 	mRoot->AddChild(mBody);
 	mBody->SetBoxSize(100.f, 100.f);
+	mRoot->SetWorldScale(100.f, 100.f, 1.f);
 
 	mBody->SetCollisionProfile("NPC");
 

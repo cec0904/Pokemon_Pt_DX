@@ -3,6 +3,7 @@
 CWidgetComponent::CWidgetComponent()
 {
 	mRenderType = EComponentRender::Render;
+	mRenderLayerName = "Object";
 }
 
 CWidgetComponent::CWidgetComponent(const CWidgetComponent& Com)

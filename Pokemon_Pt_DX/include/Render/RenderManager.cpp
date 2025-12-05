@@ -13,22 +13,83 @@ CRenderManager::CRenderManager()
 
 CRenderManager::~CRenderManager()
 {
+	auto iter = mLayerList.begin();
+	auto iterEnd = mLayerList.end();
+
+	for (; iter != iterEnd; ++iter)
+	{
+		SAFE_DELETE(iter->second);
+	}
 	SAFE_RELEASE(mSampler);
 	SAFE_DELETE(mStateManager);
 }
 
 void CRenderManager::AddRenderList(class CSceneComponent* Component)
 {
-	mRenderList.emplace_back(Component);
+	//mRenderList.emplace_back(Component);
+	FRenderLayer* Layer = FindLayer(Component->GetRenderLayerName());
+
+	if (!Layer)
+	{
+		return;
+	}
+
+	//등록
+	Layer->RenderList.emplace_back(Component);
 }
 
 void CRenderManager::ClearRenderList()
 {
-	mRenderList.clear();
+	auto iter = mLayerList.begin();
+	auto iterEnd = mLayerList.end();
+
+	for (; iter != iterEnd; ++iter)
+	{
+		iter->second->RenderList.clear();
+	}
+}
+
+bool CRenderManager::CreateRenderLayer(const string& Name, int ZOrder)
+{
+	FRenderLayer* Layer = FindLayer(Name);
+
+	if (Layer)
+	{
+		return true;
+	}
+
+	Layer = new FRenderLayer;
+
+	Layer->ZOrder = ZOrder;
+
+	mLayerList.insert(std::make_pair(ZOrder, Layer));
+	mLayerNameList[Name] = ZOrder;
+
+	return true;
+}
+
+FRenderLayer* CRenderManager::FindLayer(const string& Name)
+{
+	auto iter = mLayerNameList.find(Name);
+
+	if (iter == mLayerNameList.end())
+	{
+		return nullptr;
+	}
+
+	int ZOrder = iter->second;
+
+	auto iter1 = mLayerList.find(ZOrder);
+
+	return iter1->second;
 }
 
 bool CRenderManager::Init()
 {
+	//사용할 레이어 등록
+	CreateRenderLayer("BackGround", INT_MIN);
+	CreateRenderLayer("Object", 0);
+
 	mStateManager = new CRenderStateManager;
 
 	if (!mStateManager->Init())
@@ -74,24 +135,24 @@ bool CRenderManager::Init()
 
 void CRenderManager::Render()
 {
-	//정렬해주기
-	switch (mRenderSortType)
-	{
-	case ERenderSortType::None:
-		break;
-	case ERenderSortType::Y:
-		if (mRenderList.size() > 1)
-		{
-			mRenderList.sort(CRenderManager::SortY);
-		}
-		break;
-	case ERenderSortType::Alpha:
-		if (mRenderList.size() > 1)
-		{
-			mRenderList.sort(CRenderManager::SortAlpha);
-		}
-		break;
-	}
+	////정렬해주기
+	//switch (mRenderSortType)
+	//{
+	//case ERenderSortType::None:
+	//	break;
+	//case ERenderSortType::Y:
+	//	if (mRenderList.size() > 1)
+	//	{
+	//		mRenderList.sort(CRenderManager::SortY);
+	//	}
+	//	break;
+	//case ERenderSortType::Alpha:
+	//	if (mRenderList.size() > 1)
+	//	{
+	//		mRenderList.sort(CRenderManager::SortAlpha);
+	//	}
+	//	break;
+	//}
 
 
 	//기본 샘플러 셋팅 
@@ -102,40 +163,64 @@ void CRenderManager::Render()
 	//레스터라이저 셋팅 
 	mRasterizer->SetState();
 
-
-
-	//그리기 
-	auto iter = mRenderList.begin();
-	auto iterEnd = mRenderList.end();
-
-	for (; iter != iterEnd;)
-	{
-		//Active
-		if (!(*iter)->IsActive())
-		{
-			iter = mRenderList.erase(iter);
-			iterEnd = mRenderList.end();
-			continue;
-		}
-		else if (!(*iter)->IsEnable())
-		{
-			++iter;
-			continue;
-		}
-
-		// 그려줘 
-		(*iter)->PreRender();
-
-		(*iter)->Render();
-
-		(*iter)->PostRender();
-
-		++iter;
-	}
-
-
 	mDepthDisable->SetState();
 
+	auto iter = mLayerList.begin();
+	auto iterEnd = mLayerList.end();
+
+	for (; iter != iterEnd; ++iter)
+	{
+		FRenderLayer* Layer = iter->second;
+
+		//정렬해주기
+		switch (mRenderSortType)
+		{
+		case ERenderSortType::None:
+			break;
+		case ERenderSortType::Y:
+			if (Layer->RenderList.size() > 1)
+			{
+				Layer->RenderList.sort(CRenderManager::SortY);
+			}
+			break;
+		case ERenderSortType::Alpha:
+			if (Layer->RenderList.size() > 1)
+			{
+				Layer->RenderList.sort(CRenderManager::SortAlpha);
+			}
+			break;
+		}
+
+
+		//그리기 
+		auto iter1 = Layer->RenderList.begin();
+		auto iterEnd1 = Layer->RenderList.end();
+
+		for (; iter1 != iterEnd1;)
+		{
+			//Active
+			if (!(*iter1)->IsActive())
+			{
+				iter1 = Layer->RenderList.erase(iter1);
+				iterEnd1 = Layer->RenderList.end();
+				continue;
+			}
+			else if (!(*iter1)->IsEnable())
+			{
+				++iter1;
+				continue;
+			}
+
+			// 그려줘 
+			(*iter1)->PreRender();
+
+			(*iter1)->Render();
+
+			(*iter1)->PostRender();
+
+			++iter1;
+		}
+	}
 	// UI는 여기서 그려줄 것이다!
 	CSceneManager::GetInst()->RenderUI();
 
@@ -147,7 +232,6 @@ void CRenderManager::Render()
 	mAlphaBlend->ResetState();
 	//레스터라이저 종료
 	mRasterizer->ResetState();
-
 }
 
 bool CRenderManager::SortY(const CSharedPtr<class CSceneComponent>& Src, const CSharedPtr<class CSceneComponent>& Dest)

@@ -52,7 +52,8 @@ bool CStartWidget::Init()
 
 	AddWidget(Back);
 	AddWidget(Title);
-	
+	AddWidget(mButton);
+
 
 
 	mButton->SetPos(640.f, 200.f);
@@ -72,7 +73,6 @@ bool CStartWidget::Init()
 
 	mButton->SetEventCallBack(EButtonEventState::Click, this, &CStartWidget::StartButtonClick);
 
-	AddWidget(mButton);
 
 	return true;
 }
