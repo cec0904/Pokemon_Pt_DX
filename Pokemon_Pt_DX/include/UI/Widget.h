@@ -28,6 +28,10 @@ public:
 protected:
 	//UI가 포함된 Scene
 	class CScene* mScene = nullptr;
+
+	// 부모 위젯 포인터
+	CWidget* mParent = nullptr;
+
 	// 해당 위젯을 들고있는 오브젝트
 	CSharedPtr<CSceneObject> mOwnerObject;
 
@@ -37,12 +41,14 @@ protected:
 	class CUICBuffer* mUICBuffer = nullptr;
 	class CTransformCBuffer* mTransformCBuffer = nullptr;
 
-
-
-
 	string mName;
-	//위치
+
+	// 상대적인 위치
 	FVector2D mPos;
+
+	// 최종 출력 위치
+	FVector2D mRenderPos;
+
 	//사이즈,
 	FVector2D mSize;
 	//피봇
@@ -56,10 +62,31 @@ protected:
 	bool mMouseOn = false;
 
 public:
+	void SetParent(CWidget* Widget)
+	{
+		mParent = Widget;
+	}
+
+	void SetOwnerObject(class CSceneObject* Object)
+	{
+		mOwnerObject = Object;
+	}
+
+public:
+
+	const string& GetName() const
+	{
+		return mName;
+	}
 
 	const FVector2D& GetPos() const
 	{
 		return mPos;
+	}
+
+	const FVector2D& GetRenderPos() const
+	{
+		return mRenderPos;
 	}
 
 	const FVector2D& GetSize() const
@@ -87,6 +114,12 @@ public:
 	{
 		mPos = Pos;
 	}
+
+	void SetRenderPos(const FVector2D& Pos)
+	{
+		mRenderPos = Pos;
+	}
+
 
 	void SetPos(float X, float Y)
 	{
@@ -159,6 +192,7 @@ public:
 	virtual bool Init();
 	virtual void Update(float DeltaTime);
 	virtual void Render();
+	virtual void Render(const FVector3D& Pos);
 	virtual bool CollisionMouse(CWidget** Result, const FVector2D& MousePos);
 	virtual void EndFrame();
 

@@ -31,6 +31,7 @@ C:\Users\전의찬\Desktop\어소트락\Pokemon_Pt_DX\Pokemon_Pt_DX\include\Comp
 C:\Users\전의찬\Desktop\어소트락\Pokemon_Pt_DX\Pokemon_Pt_DX\include\Component\SceneComponent.cpp;C:\Users\전의찬\Desktop\어소트락\Pokemon_Pt_DX\Pokemon_Pt_DX\BinObj\SceneComponent.obj
 C:\Users\전의찬\Desktop\어소트락\Pokemon_Pt_DX\Pokemon_Pt_DX\include\Component\SpriteComponent.cpp;C:\Users\전의찬\Desktop\어소트락\Pokemon_Pt_DX\Pokemon_Pt_DX\BinObj\SpriteComponent.obj
 C:\Users\전의찬\Desktop\어소트락\Pokemon_Pt_DX\Pokemon_Pt_DX\include\Component\StaticMeshComponent.cpp;C:\Users\전의찬\Desktop\어소트락\Pokemon_Pt_DX\Pokemon_Pt_DX\BinObj\StaticMeshComponent.obj
+C:\Users\전의찬\Desktop\어소트락\Pokemon_Pt_DX\Pokemon_Pt_DX\include\Component\WidgetComponent.cpp;C:\Users\전의찬\Desktop\어소트락\Pokemon_Pt_DX\Pokemon_Pt_DX\BinObj\WidgetComponent.obj
 C:\Users\전의찬\Desktop\어소트락\Pokemon_Pt_DX\Pokemon_Pt_DX\include\Device.cpp;C:\Users\전의찬\Desktop\어소트락\Pokemon_Pt_DX\Pokemon_Pt_DX\BinObj\Device.obj
 C:\Users\전의찬\Desktop\어소트락\Pokemon_Pt_DX\Pokemon_Pt_DX\include\Gameinfo.cpp;C:\Users\전의찬\Desktop\어소트락\Pokemon_Pt_DX\Pokemon_Pt_DX\BinObj\Gameinfo.obj
 C:\Users\전의찬\Desktop\어소트락\Pokemon_Pt_DX\Pokemon_Pt_DX\include\GameManager.cpp;C:\Users\전의찬\Desktop\어소트락\Pokemon_Pt_DX\Pokemon_Pt_DX\BinObj\GameManager.obj
@@ -86,7 +87,9 @@ C:\Users\전의찬\Desktop\어소트락\Pokemon_Pt_DX\Pokemon_Pt_DX\include\Shar
 C:\Users\전의찬\Desktop\어소트락\Pokemon_Pt_DX\Pokemon_Pt_DX\include\Share\Object.cpp;C:\Users\전의찬\Desktop\어소트락\Pokemon_Pt_DX\Pokemon_Pt_DX\BinObj\Object.obj
 C:\Users\전의찬\Desktop\어소트락\Pokemon_Pt_DX\Pokemon_Pt_DX\include\Share\Timer.cpp;C:\Users\전의찬\Desktop\어소트락\Pokemon_Pt_DX\Pokemon_Pt_DX\BinObj\Timer.obj
 C:\Users\전의찬\Desktop\어소트락\Pokemon_Pt_DX\Pokemon_Pt_DX\include\UI\Common\Button.cpp;C:\Users\전의찬\Desktop\어소트락\Pokemon_Pt_DX\Pokemon_Pt_DX\BinObj\Button.obj
+C:\Users\전의찬\Desktop\어소트락\Pokemon_Pt_DX\Pokemon_Pt_DX\include\UI\Common\Image.cpp;C:\Users\전의찬\Desktop\어소트락\Pokemon_Pt_DX\Pokemon_Pt_DX\BinObj\Image.obj
 C:\Users\전의찬\Desktop\어소트락\Pokemon_Pt_DX\Pokemon_Pt_DX\include\UI\Common\TextBlock.cpp;C:\Users\전의찬\Desktop\어소트락\Pokemon_Pt_DX\Pokemon_Pt_DX\BinObj\TextBlock.obj
+C:\Users\전의찬\Desktop\어소트락\Pokemon_Pt_DX\Pokemon_Pt_DX\include\UI\UserWidget\HeadInfo.cpp;C:\Users\전의찬\Desktop\어소트락\Pokemon_Pt_DX\Pokemon_Pt_DX\BinObj\HeadInfo.obj
 C:\Users\전의찬\Desktop\어소트락\Pokemon_Pt_DX\Pokemon_Pt_DX\include\UI\UserWidget\MainWidget.cpp;C:\Users\전의찬\Desktop\어소트락\Pokemon_Pt_DX\Pokemon_Pt_DX\BinObj\MainWidget.obj
 C:\Users\전의찬\Desktop\어소트락\Pokemon_Pt_DX\Pokemon_Pt_DX\include\UI\UserWidget\StartWidget.cpp;C:\Users\전의찬\Desktop\어소트락\Pokemon_Pt_DX\Pokemon_Pt_DX\BinObj\StartWidget.obj
 C:\Users\전의찬\Desktop\어소트락\Pokemon_Pt_DX\Pokemon_Pt_DX\include\UI\UserWidget\UserWidget.cpp;C:\Users\전의찬\Desktop\어소트락\Pokemon_Pt_DX\Pokemon_Pt_DX\BinObj\UserWidget.obj

@@ -1,6 +1,16 @@
 #pragma once
 #include "SceneObject.h"
 
+enum class EMonsterState
+{
+	Idle,
+	Recone,
+	Research,
+	Move,
+	Attack,
+	End
+};
+
 class CMonsterObject :
     public CSceneObject
 {
@@ -18,13 +28,35 @@ protected:
 	//CSharedPtr<class CColliderAABB2D> mBody;
 	CSharedPtr<class CColliderSphere2D> mBody;
 	//CSharedPtr<class CColliderOBB2D> mBody;
+
+	// Widget Component
+	CSharedPtr<class CWidgetComponent> mWidgetComponent;
+
 	CSharedPtr<CSceneObject> mTarget;
+
+	EMonsterState mState;
 
 	float mDetectDistance = 0.f;
 
 	//몬스터 체력 
 	int mHP = 5;
 
+public:
+	EMonsterState GetState() const
+	{
+		return mState;
+	}
+
+	void SetState(EMonsterState State)
+	{
+		mState = State;
+	}
+protected:
+	virtual void Idle(float DeltaTime);
+	virtual void Recone(float DeltaTime);
+	virtual void Research(float DeltaTime);
+	virtual void Move(float DeltaTime);
+	virtual void Attack(float DeltaTime);
 
 private:
 	void CollisionMonster(const FVector3D& HitPont, class CColliderBase* Dest);

@@ -62,6 +62,26 @@ void CWidget::Update(float DeltaTime)
 
 void CWidget::Render()
 {
+	if (mParent)
+	{
+		mRenderPos = mParent->GetRenderPos() + mPos;
+	}
+	else
+	{
+		mRenderPos = mPos;
+	}
+}
+
+void CWidget::Render(const FVector3D& Pos)
+{
+	if (mParent)
+	{
+		mRenderPos = mParent->GetRenderPos() + mPos;
+	}
+	else
+	{
+		mRenderPos = mPos;
+	}
 }
 
 bool CWidget::CollisionMouse(CWidget** Result, const FVector2D& MousePos)

@@ -3,8 +3,10 @@
 #include "../../Device.h"
 #include "../../Asset/AssetManager.h"
 #include "../../Asset/Font/FontManager.h"
+#include "../../Scene/CameraManager.h"
 #include "../../Scene/Scene.h"
 #include "../../Scene/SceneAssetManager.h"
+
 
 CTextBlock::CTextBlock()
 {
@@ -222,7 +224,7 @@ void CTextBlock::Render()
 	FResolution RS = CDevice::GetInst()->GetResolution();
 
 	D2D1_POINT_2F Point;
-	Point.x = mPos.x;
+	Point.x = mRenderPos.x;
 	Point.y = RS.Height - mPos.y - mSize.y;
 
 	if (mTransparency)
@@ -237,4 +239,48 @@ void CTextBlock::Render()
 	mTarget->DrawTextLayout(Point, mLayout, mTextColor, D2D1_DRAW_TEXT_OPTIONS_NONE);
 	
 	mTarget->EndDraw();
+}
+
+void CTextBlock::Render(const FVector3D& Pos)
+{
+	CWidget::Render(Pos);
+
+	mTarget->BeginDraw();
+
+	FVector2D RenderPos = mRenderPos;
+
+	RenderPos.x += Pos.x;
+	RenderPos.y += Pos.y;
+
+	FResolution RS = CDevice::GetInst()->GetResolution();
+
+	const FVector3D& CameraPos = mScene->GetCameraManager()->GetCameraWorldPos();
+
+	RenderPos.x -= CameraPos.x;
+	RenderPos.y -= CameraPos.y;
+
+	RenderPos.x -= mPivot.x * mSize.x;
+	RenderPos.y -= mPivot.y * mSize.y;
+
+	RenderPos.x += (RS.Width * 0.5f);
+	RenderPos.y += (RS.Height * 0.5f);
+
+
+	D2D1_POINT_2F Point;
+	Point.x = RenderPos.x;
+	Point.y = RS.Height - RenderPos.y - mSize.y;
+
+	if (mTransparency)
+	{
+		mTextColor->SetOpacity(mOpacity);
+	}
+	else
+	{
+		mTextColor->SetOpacity(1.f);
+	}
+
+	mTarget->DrawTextLayout(Point, mLayout, mTextColor, D2D1_DRAW_TEXT_OPTIONS_NONE);
+
+	mTarget->EndDraw();
+
 }

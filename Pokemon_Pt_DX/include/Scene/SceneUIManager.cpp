@@ -1,4 +1,5 @@
 #include "SceneUIManager.h"
+#include "../Share/Log.h"
 
 
 CSceneUIManager::CSceneUIManager()
@@ -42,6 +43,11 @@ void CSceneUIManager::Update(float DeltaTime)
 		}
 		(*iter)->Update(DeltaTime);
 		++iter;
+	}
+
+	if (mMouseHoveredWidget)
+	{
+		//CLog::PrintLog(mMouseHoveredWidget->GetName());
 	}
 }
 
@@ -108,7 +114,7 @@ bool CSceneUIManager::CollisionMouse(float DeltaTime, const FVector2D& MousePos)
 void CSceneUIManager::Render()
 {
 	//그려줄 위젯 정렬
-	if (mWidgetList.size() > 2)
+	if (mWidgetList.size() >= 2)
 	{
 		//vector
 		//Z오더는 숫가자 클수록 나중에 그려진다.
@@ -151,11 +157,11 @@ void CSceneUIManager::Render()
 // 오름차순 : 충돌 처리는 앞에서부터 뒤로 검사하여 가장 앞에 있는 UI가 충돌됬느지 검사하기 위해서 
 bool CSceneUIManager::SortCollision(const CSharedPtr<CWidget>& Src, const CSharedPtr<CWidget>& Dest)
 {
-	return Src->GetZOrder() < Dest->GetZOrder();
+	return Src->GetZOrder() > Dest->GetZOrder();
 }
 
 bool CSceneUIManager::SortRender(const CSharedPtr<CWidget>& Src, const CSharedPtr<CWidget>& Dest)
 {
 	// 내림차순
-	return Src->GetZOrder() > Dest->GetZOrder();
+	return Src->GetZOrder() < Dest->GetZOrder();
 }

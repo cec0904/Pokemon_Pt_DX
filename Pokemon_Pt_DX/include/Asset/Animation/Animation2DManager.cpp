@@ -30,35 +30,6 @@ bool CAnimation2DManager::Init()
 		AddFrame("PlayerIdle", i * 200.f, 0.f, 200.f, 200.f);
 	}*/
 
-
-	CreateAnimation("Hiker");
-	SetAnimationTextureType("Hiker", EAnimationTextureType::Frame);
-	vector<const TCHAR*> Hiker;
-	Hiker.emplace_back(TEXT("Texture\\Pokemon\\NPC\\Hiker\\Hiker_0.png"));
-	Hiker.emplace_back(TEXT("Texture\\Pokemon\\NPC\\Hiker\\Hiker_1.png"));
-	Hiker.emplace_back(TEXT("Texture\\Pokemon\\NPC\\Hiker\\Hiker_2.png"));
-	Hiker.emplace_back(TEXT("Texture\\Pokemon\\NPC\\Hiker\\Hiker_3.png"));
-	
-	SetTexture("Hiker", "Hiker", Hiker);
-	AddFrameCount("Hiker", 4, 0.f, 0.f, 32.f, 32.f);
-
-
-	//// 플레이어 걷기
-	//CreateAnimation("PlayerWalk");
-	//SetAnimationTextureType("PlayerWalk", EAnimationTextureType::Frame);
-
-	vector<const TCHAR*> FileNames;
-	//FileNames.emplace_back(TEXT("Texture\\Player\\PlayerFrame\\adventurer-walk-00.png"));
-	//FileNames.emplace_back(TEXT("Texture\\Player\\PlayerFrame\\adventurer-walk-01.png"));
-	//FileNames.emplace_back(TEXT("Texture\\Player\\PlayerFrame\\adventurer-walk-02.png"));
-	//FileNames.emplace_back(TEXT("Texture\\Player\\PlayerFrame\\adventurer-walk-03.png"));
-	//FileNames.emplace_back(TEXT("Texture\\Player\\PlayerFrame\\adventurer-walk-04.png"));
-	//FileNames.emplace_back(TEXT("Texture\\Player\\PlayerFrame\\adventurer-walk-05.png"));
-
-	//SetTexture("PlayerWalk", "PlayerWalk", FileNames);
-	//AddFrameCount("PlayerWalk", 6, 0.f, 0.f, 50.f, 37.f);
-
-
 	// 플레이어 위로 걷기
 	CreateAnimation("PlayerWalkUp");
 	SetAnimationTextureType("PlayerWalkUp", EAnimationTextureType::Frame);
@@ -112,26 +83,8 @@ bool CAnimation2DManager::Init()
 	AddFrameCount("PlayerWalkLeft", 4, 0.f, 0.f, 32.f, 32.f);
 
 
-	//플레이어 공격
-	//Texture\\Player\\PlayerFrame\\adventurer-kick-00.png
-
-	CreateAnimation("PlayerAttack");
-	SetAnimationTextureType("PlayerAttack", EAnimationTextureType::Frame);
-	FileNames.clear();
-	FileNames.emplace_back(TEXT("Texture\\Player\\PlayerFrame\\adventurer-kick-00.png"));
-	FileNames.emplace_back(TEXT("Texture\\Player\\PlayerFrame\\adventurer-kick-01.png"));
-	FileNames.emplace_back(TEXT("Texture\\Player\\PlayerFrame\\adventurer-kick-02.png"));
-	FileNames.emplace_back(TEXT("Texture\\Player\\PlayerFrame\\adventurer-kick-03.png"));
-	FileNames.emplace_back(TEXT("Texture\\Player\\PlayerFrame\\adventurer-kick-04.png"));
-	FileNames.emplace_back(TEXT("Texture\\Player\\PlayerFrame\\adventurer-kick-05.png"));
-	FileNames.emplace_back(TEXT("Texture\\Player\\PlayerFrame\\adventurer-kick-06.png"));
-	FileNames.emplace_back(TEXT("Texture\\Player\\PlayerFrame\\adventurer-kick-07.png"));
-
-	SetTexture("PlayerAttack", "PlayerAttack", FileNames);
-	AddFrameCount("PlayerAttack", 8, 0.f, 0.f, 50.f, 37.f);
-
 	//폭발 이펙트
-
+	vector<const TCHAR*> FileNames;
 	CreateAnimation("Explosion");
 	SetAnimationTextureType("Explosion", EAnimationTextureType::Frame);
 	FileNames.clear();

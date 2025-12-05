@@ -281,12 +281,22 @@ bool CGameManager::Create()
 
 	//윈도우 클라이언트 영역의 크기를 원하는 크기로 지정한다. 
 	//위에서 지정한 윈도우 크기는 타이틀바 등의 크기가 모두 합쳐진 크기로 지정된다. 
-	RECT WindowRC = { 0, 0, 1280, 720 };
+	// Left, Top, Right, Bottom
+	RECT WindowRC = { 0, 0, 600, 800};
 	//클라이언트 영역이 1280*720이 되도록 윈도우 크기를 재조정한다.
 	AdjustWindowRect(&WindowRC, WS_OVERLAPPEDWINDOW, FALSE);
 
-	SetWindowPos(mhWnd, HWND_TOPMOST, 100, 100, WindowRC.right - WindowRC.left, WindowRC.bottom - WindowRC.top, SWP_NOMOVE | SWP_NOZORDER);
+	// 모니터 해상도 얻기
+	int ScreenW = GetSystemMetrics(SM_CXSCREEN);
+	int ScreenH = GetSystemMetrics(SM_CYSCREEN);
 
+	// 중앙 위치 계산
+	int x = (ScreenW - (WindowRC.right - WindowRC.left)) / 2;
+	//int y = (ScreenH - (WindowRC.bottom - WindowRC.top)) / 2;
+
+	SetWindowPos(mhWnd, HWND_TOPMOST, x, 0, WindowRC.right - WindowRC.left, WindowRC.bottom - WindowRC.top, SWP_NOZORDER);
+
+	
 
 	//위에서 윈도우 창을 만들었다면 이제 ShowWinodw 함수를 이용해서 창을 보여줄지 숨길지를 결정한다. 
 	//ShowWindow(hWnd, nCmdShow);

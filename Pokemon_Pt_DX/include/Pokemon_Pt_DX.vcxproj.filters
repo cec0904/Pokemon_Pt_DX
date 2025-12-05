@@ -190,6 +190,9 @@
     <Filter Include="06.Object\05.NPC">
       <UniqueIdentifier>{16c300eb-add6-4d11-8df5-540e0f599896}</UniqueIdentifier>
     </Filter>
+    <Filter Include="07.Component\01.SceneComponent\06.Widget">
+      <UniqueIdentifier>{be036ed1-e71d-4e71-9b0c-e538fe606a00}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -468,17 +471,26 @@
     <ClCompile Include="UI\Common\TextBlock.cpp">
       <Filter>10.UI\01.Common</Filter>
     </ClCompile>
-    <ClCompile Include="Scene\SceneStart.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="UI\UserWidget\StartWidget.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
     <ClCompile Include="Object\NPCManager.cpp">
       <Filter>06.Object\05.NPC</Filter>
     </ClCompile>
     <ClCompile Include="Object\NPCHiker.cpp">
       <Filter>06.Object\05.NPC</Filter>
+    </ClCompile>
+    <ClCompile Include="UI\Common\Image.cpp">
+      <Filter>10.UI\01.Common</Filter>
+    </ClCompile>
+    <ClCompile Include="UI\UserWidget\HeadInfo.cpp">
+      <Filter>10.UI\02.UserWidget</Filter>
+    </ClCompile>
+    <ClCompile Include="Component\WidgetComponent.cpp">
+      <Filter>07.Component\01.SceneComponent\06.Widget</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene\SceneStart.cpp">
+      <Filter>05.Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="UI\UserWidget\StartWidget.cpp">
+      <Filter>10.UI\02.UserWidget\01.Main</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -803,17 +815,26 @@
     <ClInclude Include="UI\Common\TextBlock.h">
       <Filter>10.UI\01.Common</Filter>
     </ClInclude>
-    <ClInclude Include="Scene\SceneStart.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="UI\UserWidget\StartWidget.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
     <ClInclude Include="Object\NPCHiker.h">
       <Filter>06.Object\05.NPC</Filter>
     </ClInclude>
     <ClInclude Include="Object\NPCManager.h">
       <Filter>06.Object\05.NPC</Filter>
+    </ClInclude>
+    <ClInclude Include="UI\Common\Image.h">
+      <Filter>10.UI\01.Common</Filter>
+    </ClInclude>
+    <ClInclude Include="UI\UserWidget\HeadInfo.h">
+      <Filter>10.UI\02.UserWidget</Filter>
+    </ClInclude>
+    <ClInclude Include="Component\WidgetComponent.h">
+      <Filter>07.Component\01.SceneComponent\06.Widget</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene\SceneStart.h">
+      <Filter>05.Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="UI\UserWidget\StartWidget.h">
+      <Filter>10.UI\02.UserWidget\01.Main</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

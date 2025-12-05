@@ -37,16 +37,16 @@ bool CMainWidget::Init()
 
 	AddWidget(mButton);
 
-	CSharedPtr<CTextBlock> Text = mScene->GetUIManager()->CreateWidget<CTextBlock>("ButtonText");
+	//CSharedPtr<CTextBlock> Text = mScene->GetUIManager()->CreateWidget<CTextBlock>("ButtonText");
 
-	Text->SetText(TEXT("전의찬"));
+	/*Text->SetText(TEXT("전의찬"));
 	Text->SetTextColor(0, 255, 255, 255);
 	Text->SetPos(500.f, 500.f);
 	Text->SetSize(100.f, 100.f);
 	Text->SetFontSize(20.f);
 	Text->SetAlignH(ETextAlignH::Center);
 	Text->SetAlignV(ETextAlignV::Middle);
-	mButton->SetChild(Text);
+	mButton->SetChild(Text);*/
 
 	return true;
 }

@@ -208,7 +208,7 @@ void CButton::Render()
 
 	matScale.Scaling(mSize);
 	matRot.RotationZ(mRotation);
-	matTranslate.Translation(mPos);
+	matTranslate.Translation(mRenderPos);
 
 	//크자이공부 !!!!!
 	matWorld = matScale * matRot * matTranslate;
@@ -265,9 +265,11 @@ void CButton::Render()
 	{
 		mChild->Render();
 	}
-	
+}
 
-
+void CButton::Render(const FVector3D& Pos)
+{
+	CWidget::Render(Pos);
 }
 
 void CButton::MouseHovered()

@@ -13,25 +13,53 @@
 //문자열 
 #include <sstream>
 
+#include "../Component/WidgetComponent.h"
+#include "../Scene/SceneUIManager.h"
+#include "../UI/UserWidget/HeadInfo.h"
+
+
 CMonsterObject::CMonsterObject()
 {
+	mState = EMonsterState::Idle;
 }
 
 CMonsterObject::CMonsterObject(const CMonsterObject& Obj)
 	: CSceneObject(Obj)
 {
+	mState = EMonsterState::Idle;
 }
 
 CMonsterObject::CMonsterObject(CMonsterObject&& Obj)
 	: CSceneObject(Obj)
 
 {
+	mState = EMonsterState::Idle;
 }
 
 CMonsterObject::~CMonsterObject()
 {
 }
 
+
+void CMonsterObject::Idle(float DeltaTime)
+{
+}
+
+void CMonsterObject::Recone(float DeltaTime)
+{
+}
+
+void CMonsterObject::Research(float DeltaTime)
+{
+}
+
+void CMonsterObject::Move(float DeltaTime)
+{
+}
+
+void CMonsterObject::Attack(float DeltaTime)
+{
+}
 
 void CMonsterObject::CollisionMonster(const FVector3D& HitPont, CColliderBase* Dest)
 {
@@ -75,7 +103,12 @@ bool CMonsterObject::Init()
 	mBody = CreateComponent<CColliderSphere2D>();
 	//mBody = CreateComponent<CColliderOBB2D>();
 
+	CHeadInfo* Widget = mScene->GetUIManager()->CreateWidget<CHeadInfo>("HeadInfo");
 
+	mWidgetComponent = CreateComponent<CWidgetComponent>();
+	mWidgetComponent->SetWidget(Widget);
+
+	mRoot->AddChild(mWidgetComponent);
 
 	/*mRoot->SetMesh("CenterRect");
 	mRoot->SetShader("ColorMeshShader");*/
@@ -102,9 +135,35 @@ void CMonsterObject::Update(float DeltaTime)
 	if (!mTarget->IsActive())
 	{
 		mTarget = nullptr;
+		return;
 	}
-	else if (mTarget->IsEnable())
+	else if (!mTarget->IsEnable())
 	{
-		// TODO::
+		return;
+	}
+
+	// FSM
+	// 유한 상태 기계
+	switch (mState)
+	{
+	case EMonsterState::Idle:
+		Idle(DeltaTime);
+		break;
+	case EMonsterState::Recone:
+		Recone(DeltaTime);
+		break;
+	case EMonsterState::Research:
+		Research(DeltaTime);
+		break;
+	case EMonsterState::Move:
+		Move(DeltaTime);
+		break;
+	case EMonsterState::Attack:
+		Attack(DeltaTime);
+		break;
+	case EMonsterState::End:
+		break;
+	default:
+		break;
 	}
 }

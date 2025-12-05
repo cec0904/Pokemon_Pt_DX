@@ -67,12 +67,9 @@ bool CNPCHiker::Init()
 
 	mBody->SetCollisionProfile("NPC");
 
-	mAnimation = mRoot->CreateAnimation2D<CAnimation2D>();
-	mAnimation->AddSequence("Hiker", 1.f, 1.f, true, false);
-
+	
 	mRoot->SetFlip(false);
 
-	mAnimation->ChangeAnimation("Hiker");
 
 	return true;
 }
